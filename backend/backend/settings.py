@@ -79,7 +79,7 @@ DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
         'NAME': 'next_caltrain',
-        'USER': 'next_caltrain_user',
+        'USER': 'chinaowl',
         'PASSWORD': '',
         'HOST': 'localhost',
         'PORT': '',

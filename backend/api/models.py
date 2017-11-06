@@ -10,21 +10,7 @@ from __future__ import unicode_literals
 from django.db import models
 
 
-class StopTimes(models.Model):
-    trip_id = models.CharField(max_length=128, blank=True, null=True)
-    arrival_time = models.TextField(blank=True, null=True)  # This field type is a guess.
-    departure_time = models.TextField(blank=True, null=True)  # This field type is a guess.
-    stop_id = models.IntegerField(blank=True, null=True)
-    stop_sequence = models.SmallIntegerField(blank=True, null=True)
-    pickup_type = models.SmallIntegerField(blank=True, null=True)
-    drop_off_type = models.SmallIntegerField(blank=True, null=True)
-
-    class Meta:
-        managed = False
-        db_table = 'stop_times'
-
-
-class Stops(models.Model):
+class Stop(models.Model):
     stop_id = models.IntegerField(blank=True, null=True)
     stop_code = models.IntegerField(blank=True, null=True)
     stop_name = models.CharField(max_length=128, blank=True, null=True)
@@ -40,10 +26,24 @@ class Stops(models.Model):
 
     class Meta:
         managed = False
-        db_table = 'stops'
+        db_table = 'stop'
 
 
-class Trips(models.Model):
+class StopTime(models.Model):
+    trip_id = models.CharField(max_length=128, blank=True, null=True)
+    arrival_time = models.TextField(blank=True, null=True)  # This field type is a guess.
+    departure_time = models.TextField(blank=True, null=True)  # This field type is a guess.
+    stop_id = models.IntegerField(blank=True, null=True)
+    stop_sequence = models.SmallIntegerField(blank=True, null=True)
+    pickup_type = models.SmallIntegerField(blank=True, null=True)
+    drop_off_type = models.SmallIntegerField(blank=True, null=True)
+
+    class Meta:
+        managed = False
+        db_table = 'stop_time'
+
+
+class Trip(models.Model):
     route_id = models.CharField(max_length=128, blank=True, null=True)
     service_id = models.CharField(max_length=128, blank=True, null=True)
     trip_id = models.CharField(max_length=128, blank=True, null=True)
@@ -57,4 +57,4 @@ class Trips(models.Model):
 
     class Meta:
         managed = False
-        db_table = 'trips'
+        db_table = 'trip'

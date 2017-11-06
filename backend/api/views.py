@@ -1,6 +1,17 @@
 # -*- coding: utf-8 -*-
 from __future__ import unicode_literals
 
-from django.shortcuts import render
+from rest_framework import generics
 
-# Create your views here.
+from .models import Stop, Trip
+from .serializers import StopSerializer, TripSerializer
+
+
+class StopsView(generics.ListCreateAPIView):
+    queryset = Stop.objects.all()
+    serializer_class = StopSerializer
+
+
+class TripsView(generics.ListCreateAPIView):
+    queryset = Trip.objects.all()
+    serializer_class = TripSerializer
